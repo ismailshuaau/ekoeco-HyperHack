@@ -9,8 +9,26 @@ class EcoMapController extends Controller
     //
     public function show(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
 
-        return view('echoMap.show');
+        // Get Origin cordinates
+        $searchLatOrigin = $request->searchLatOrigin;
+        $searchLngOrigin = $request->searchLngOrigin;
+
+        // Get Destination cordinates
+        $searchLatDest = $request->searchLatDest;
+        $searchLngDest = $request->searchLngDest;
+        
+        // Combine cordinates
+        $originGeo = $searchLatOrigin . ', ' . $searchLngOrigin;
+        $destGeo = $searchLatDest . ', ' . $searchLngDest;
+        
+        // Get Origin name
+        // dd($request->origin);
+        $originName = $request->origin;
+        $destName = $request->destination;
+
+        // Get Destination name
+        return view('echoMap.show', compact('originGeo', 'destGeo', 'originName', 'destName'));
     }
 }

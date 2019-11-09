@@ -16,4 +16,3 @@ Route::get('/', function () {
 });
 
 Route::post('/ecoMap', 'EcoMapController@show');
-Route::get('/test', 'EchoMapController@test');

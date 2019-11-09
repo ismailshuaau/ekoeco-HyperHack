@@ -61,14 +61,14 @@
                 <div class="form-group">
                     <label for="origin">From</label>
                     <input type="search" class="form-control" id="origin" placeholder="From" name="origin">
-                    <input type="hidden" name="search-lat-origin" id="search-lat-origin">
-                    <input type="hidden" name="search-lng-origin" id="search-lng-origin">
+                    <input type="hidden" name="searchLatOrigin" id="search-lat-origin">
+                    <input type="hidden" name="searchLngOrigin" id="search-lng-origin">
                 </div>
                 <div class="form-group">
                     <label for="destination">Destination</label>
-                    <input type="search" class="form-control" id="destination" placeholder="Destination" name="origin">
-                    <input type="hidden" name="search-lat-destination" id="search-lat-destination">
-                    <input type="hidden" name="search-lng-destination" id="search-lng-destination">
+                    <input type="search" class="form-control" id="destination" placeholder="Destination" name="destination">
+                    <input type="hidden" name="searchLatDest" id="search-lat-destination">
+                    <input type="hidden" name="searchLngDest" id="search-lng-destination">
                 </div>
                 <div class="form-group">
                     <input type="hidden" id="travelMode" value="DRIVING" />

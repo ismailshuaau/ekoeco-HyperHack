@@ -1,3 +1,5 @@
+{{-- {{ dd($originName, $destName) }} --}}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -35,36 +37,12 @@
     <div id="floating-panel">
     <b>Start: </b>
     <select id="start">
-      {{-- <option value="1.285670, 103.850839">Singapore Pub Crawl</option>
-      <option value="chicago, il">Chicago</option>
-      <option value="st louis, mo">St Louis</option>
-      <option value="joplin, mo">Joplin, MO</option>
-      <option value="oklahoma city, ok">Oklahoma City</option>
-      <option value="amarillo, tx">Amarillo</option>
-      <option value="gallup, nm">Gallup, NM</option>
-      <option value="flagstaff, az">Flagstaff, AZ</option>
-      <option value="winona, az">Winona</option>
-      <option value="kingman, az">Kingman</option>
-      <option value="barstow, ca">Barstow</option>
-      <option value="san bernardino, ca">San Bernardino</option>
-      <option value="los angeles, ca">Los Angeles</option> --}}
+    <option value="{{ $originGeo }}">{{ $originName }}</option>
     </select>
     <b>End: </b>
-    <select id="end">
-      <option value="1.289217, 103.863085">Singapore Flyer</option>
-      <option value="chicago, il">Chicago</option>
-      <option value="st louis, mo">St Louis</option>
-      <option value="joplin, mo">Joplin, MO</option>
-      <option value="oklahoma city, ok">Oklahoma City</option>
-      <option value="amarillo, tx">Amarillo</option>
-      <option value="gallup, nm">Gallup, NM</option>
-      <option value="flagstaff, az">Flagstaff, AZ</option>
-      <option value="winona, az">Winona</option>
-      <option value="kingman, az">Kingman</option>
-      <option value="barstow, ca">Barstow</option>
-      <option value="san bernardino, ca">San Bernardino</option>
-      <option value="los angeles, ca">Los Angeles</option>
-    </select>
+      <select id="end">
+        <option value="{{ $destGeo }}">{{ $destName }}</option>
+      </select>
     </div>
     <div id="map"></div>
     <script>
@@ -88,28 +66,11 @@
         document.getElementById('end').addEventListener('change', onChangeHandler);
       }
 
-    //   function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-    //     directionsService.route(
-    //         {
-    //           origin: {query: document.getElementById('start').value},
-    //           destination: {query: document.getElementById('end').value},
-    //           travelMode: 'DRIVING'
-    //         },
-    //         function(response, status) {
-    //           if (status === 'OK') {
-    //             directionsRenderer.setDirections(response);
-    //           } else {
-    //             window.alert('Directions request failed due to ' + status);
-    //           }
-    //         });
-    //   }
-
-
       function calculateAndDisplayRoute(directionsService, directionsRenderer) {
         directionsService.route(
             {
-              origin: '1.285411, 103.848173',
-              destination: '1.308896, 103.882801',
+              origin: {query: document.getElementById('start').value},
+              destination: {query: document.getElementById('end').value},
               travelMode: 'DRIVING'
             },
             function(response, status) {
@@ -120,6 +81,24 @@
               }
             });
       }
+
+
+    //   function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+    //     directionsService.route(
+    //         {
+    //         //   origin: '1.285411, 103.848173',
+    //           origin: {{ $originGeo }}
+    //           destination: '1.308896, 103.882801',
+    //           travelMode: 'DRIVING'
+    //         },
+    //         function(response, status) {
+    //           if (status === 'OK') {
+    //             directionsRenderer.setDirections(response);
+    //           } else {
+    //             window.alert('Directions request failed due to ' + status);
+    //           }
+    //         });
+    //   }
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDaVr44a8KAetha90PyNoFIKsEdHW0rzg
