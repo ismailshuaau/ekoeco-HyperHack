@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 class EcoMapController extends Controller
 {
     //
-    public function show()
+    public function show(Request $request)
     {
-        return "test";
+        // dd($request->all());
+
+        return view('echoMap.show');
     }
 }

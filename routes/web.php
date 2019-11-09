@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/ecoMap', 'EcoMapController@show');
+Route::post('/ecoMap', 'EcoMapController@show');
+Route::get('/test', 'EchoMapController@test');

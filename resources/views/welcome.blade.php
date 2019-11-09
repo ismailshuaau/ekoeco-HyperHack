@@ -56,14 +56,19 @@
 
       <section class="jumbotron text-center">
         <div class="container">
-            <form>
+            <form action="/ecoMap" method="POST">
+                @csrf
                 <div class="form-group">
                     <label for="origin">From</label>
-                    <input type="search" class="form-control" id="origin" placeholder="From">
+                    <input type="search" class="form-control" id="origin" placeholder="From" name="origin">
+                    <input type="hidden" name="search-lat-origin" id="search-lat-origin">
+                    <input type="hidden" name="search-lng-origin" id="search-lng-origin">
                 </div>
                 <div class="form-group">
                     <label for="destination">Destination</label>
-                    <input type="search" id="destination" placeholder="Where are we going?" />
+                    <input type="search" class="form-control" id="destination" placeholder="Destination" name="origin">
+                    <input type="hidden" name="search-lat-destination" id="search-lat-destination">
+                    <input type="hidden" name="search-lng-destination" id="search-lng-destination">
                 </div>
                 <div class="form-group">
                     <input type="hidden" id="travelMode" value="DRIVING" />
@@ -247,8 +252,13 @@
             var placesOrigin = places({
               appId: 'plG5O0UAXZKG',
               apiKey: '8fff983280e5a4da5f6c4a431736f16f',
-              container: document.querySelector('#origin')
+              container: document.querySelector('#origin'),
+       
             });
+            placesOrigin.on('change', function resultSelected(e) {
+              document.querySelector('#search-lat-origin').value = e.suggestion.latlng.lat || '';
+              document.querySelector('#search-lng-origin').value = e.suggestion.latlng.lng || '';
+            })
 
             // Destination
             var placesDestination = places({
@@ -256,6 +266,10 @@
               apiKey: '8fff983280e5a4da5f6c4a431736f16f',
               container: document.querySelector('#destination')
             });
+            placesDestination.on('change', function resultSelected(e) {
+              document.querySelector('#search-lat-destination').value = e.suggestion.latlng.lat || '';
+              document.querySelector('#search-lng-destination').value = e.suggestion.latlng.lng || '';
+            })
     </script>
   </body>
 </html>
