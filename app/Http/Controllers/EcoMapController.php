@@ -9,7 +9,7 @@ class EcoMapController extends Controller
     //
     public function show(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
 
         return view('echoMap.show');
     }
