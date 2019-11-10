@@ -73,10 +73,11 @@
                     <input type="hidden" name="searchLatDest" id="search-lat-destination">
                     <input type="hidden" name="searchLngDest" id="search-lng-destination">
                     <input class="form-control" type="text" id="destination" placeholder="" aria-label="Search">
-                    <input type="hidden" id="end" value="{{ $destGeo}}">
+                    <input type="hidden" id="end" value="{{ $destGeo }}">
                 </div>
             </div>
          </div>
+         <input type="hidden" id="travelMode" value="{{ $travelMode }}">
         </div>
         <!-- Collapsible content -->
       

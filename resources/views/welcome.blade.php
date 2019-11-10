@@ -14,9 +14,13 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <!-- Material Design Bootstrap -->
+    <link href="/css/mdb.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="/css/album.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+
+    {{-- <link href="/css/album.css" rel="stylesheet"> --}}
   </head>
   <body>
 
@@ -43,7 +47,7 @@
         <div class="container d-flex justify-content-between">
           <a href="#" class="navbar-brand d-flex align-items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            <strong>This is a test</strong>
+            <strong>IkoEco</strong>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -54,25 +58,31 @@
 
     <main role="main">
 
-      <section class="jumbotron text-center">
-        <div class="container">
+      <section class="container">
+        <div class="col-md-6">
             <form action="/ecoMap" method="POST">
                 @csrf
-                <div class="form-group">
-                    <label for="origin">From</label>
+                <div class="md-form active-pink active-pink-2 mb-3 mt-0 text-center">
+                    {{-- <label for="origin">From</label> --}}
                     <input type="search" class="form-control" id="origin" placeholder="From" name="origin">
                     <input type="hidden" name="searchLatOrigin" id="search-lat-origin">
                     <input type="hidden" name="searchLngOrigin" id="search-lng-origin">
                 </div>
-                <div class="form-group">
-                    <label for="destination">Destination</label>
+                <div class="md-form active-pink active-pink-2 mb-3 mt-0 text-center">
+                    {{-- <label for="destination">Destination</label> --}}
                     <input type="search" class="form-control" id="destination" placeholder="Destination" name="destination">
                     <input type="hidden" name="searchLatDest" id="search-lat-destination">
                     <input type="hidden" name="searchLngDest" id="search-lng-destination">
                 </div>
-                <div class="form-group">
-                    <input type="hidden" id="travelMode" value="DRIVING" />
-                </div>
+                {{-- <div class="form-group">
+                    <input type="hidden" id="travelMode" name="travelMode" value="DRIVING" />
+                </div> --}}
+                <select iclass="browser-default custom-select" id="travelMode" name="travelMode">
+                  <option selected value="WALKING">walking</option>
+                  <option value="TRANSIT">transit</option>
+                  <option value="BICYCLING">bicycle</option>
+                  <option value="DRIVING">driving</option>
+                </select>
                 {{-- <div class="form-group">
                   <label for="budget">Budget</label>
                   <input type="search" id="destination" placeholder="Where are we going?" />

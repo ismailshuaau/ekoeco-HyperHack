@@ -28,7 +28,12 @@ class EcoMapController extends Controller
         $originName = $request->origin;
         $destName = $request->destination;
 
+        // Get mode of transport
+        $travelMode = $request->travelMode;
+
+        // dd($travelMode);
+
         // Get Destination name
-        return view('echoMap.show', compact('originGeo', 'destGeo', 'originName', 'destName'));
+        return view('echoMap.show', compact('originGeo', 'destGeo', 'originName', 'destName', 'travelMode'));
     }
 }
